@@ -2,9 +2,11 @@ package assad.z.controller;
 
 
 import assad.z.model.User;
-import assad.z.repository.UsersRepositry;
+import assad.z.repository.UsersRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,36 +16,39 @@ import java.util.List;
 public class UsersController {
     @RequestMapping(value = "users", method = RequestMethod.GET)
     private List<User> list() {
-        return usersRepositry.findAll();
+        return usersRepository.findAll();
     }
 
     @RequestMapping(value = "users/{id}", method = RequestMethod.POST)
     public User get(@PathVariable Long id) {
-        return usersRepositry.findOne(id);
+        return usersRepository.findOne(id);
     }
 
     @RequestMapping(value = "users/{id}", method = RequestMethod.PUT)
     public User update(@PathVariable Long id, @RequestBody User user) {
-        User existingUser = usersRepositry.findOne(id);
+        User existingUser = usersRepository.findOne(id);
         BeanUtils.copyProperties(user, existingUser);
-        return usersRepositry.saveAndFlush(user);
+        return usersRepository.saveAndFlush(user);
     }
 
     @RequestMapping(value = "Users/{id}", method = RequestMethod.DELETE)
     public User delete(@PathVariable Long id){
-        User existingUser = usersRepositry.findOne(id);
-        usersRepositry.delete(existingUser);
+        User existingUser = usersRepository.findOne(id);
+        usersRepository.delete(existingUser);
         return existingUser;
     }
 
     @RequestMapping(value ="users", method = RequestMethod.POST)
-    public User create(@RequestBody User user){
-        return usersRepositry.saveAndFlush(user);
+    public User create(@RequestBody User user, BindingResult bindingResult, ModelMap modelMap){
+        if(bindingResult.hasErrors()){
+
+        }
+        return usersRepository.saveAndFlush(user);
     }
 
 
     @Autowired
-    private UsersRepositry usersRepositry;
+    private UsersRepository usersRepository;
 
 
 }

@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.sql.DataSource;
 
@@ -16,7 +17,15 @@ public class PersistenceConfiguration {
     @Bean
     @ConfigurationProperties(prefix = "spring.datasource")
     @Primary
-    public DataSource dataSource(){
+    public DataSource dataSource() {
         return DataSourceBuilder.create().build();
     }
+
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        return bCryptPasswordEncoder;
+    }
+
 }

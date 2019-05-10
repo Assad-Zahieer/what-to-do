@@ -1,25 +1,30 @@
 package assad.z.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class User {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Id
     private Long user_id;
-    private String name;
+    @NotNull(message = "First name is required")
+    @Length(max = 30, message = "Maximum 30 characters")
+    @Column(name = "first_name")
     private String email;
+    @NotNull(message = "Password is required")
+    @Length(min = 6, message = "Password must be at lest 6 characters")
+    @Column(name = "password")
     private String password;
 
     public User() {
 
     }
 
-    public User(String name, String email, String password) {
-        this.name = name;
+    public User(String email, String password) {
         this.email = email;
         this.password = password;
     }
@@ -30,14 +35,6 @@ public class User {
 
     public void setUser_id(Long user_id) {
         this.user_id = user_id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getEmail() {

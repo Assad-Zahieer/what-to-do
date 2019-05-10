@@ -2,18 +2,19 @@ package assad.z.model;
 
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Item {
+    @Column(name = "user_id")
     private Long user_id;
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Id
+    @Column(name = "item_id")
     private Long item_id;
+    @Column(name="item")
     private String item;
+    @Column(name = "status")
     private boolean status = true;
 
     public Item() {
