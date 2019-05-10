@@ -1,6 +1,6 @@
-package assad.z.domain;
+package assad.z.model;
 
-import java.util.Date;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +14,6 @@ public class Item {
     @Id
     private Long item_id;
     private String item;
-    private Date date;
     private boolean status = true;
 
     public Item() {
@@ -58,13 +57,6 @@ public class Item {
         this.status = status;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
 
 
 }

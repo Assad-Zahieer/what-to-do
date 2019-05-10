@@ -1,4 +1,4 @@
-package assad.z.domain;
+package assad.z.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class User {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Id
-    private Long item_id;
+    private Long user_id;
     private String name;
     private String email;
     private String password;
@@ -24,12 +24,12 @@ public class User {
         this.password = password;
     }
 
-    public Long getItem_id() {
-        return item_id;
+    public Long getUser_id() {
+        return user_id;
     }
 
-    public void setItem_id(Long item_id) {
-        this.item_id = item_id;
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
     }
 
     public String getName() {
