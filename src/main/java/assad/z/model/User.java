@@ -1,7 +1,6 @@
 package assad.z.model;
 
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.Length;
+
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -12,11 +11,9 @@ public class User {
     @Id
     private Long user_id;
     @NotNull(message = "First name is required")
-    @Length(max = 30, message = "Maximum 30 characters")
     @Column(name = "first_name")
     private String email;
     @NotNull(message = "Password is required")
-    @Length(min = 6, message = "Password must be at lest 6 characters")
     @Column(name = "password")
     private String password;
 
