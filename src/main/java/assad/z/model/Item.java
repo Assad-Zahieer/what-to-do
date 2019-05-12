@@ -3,18 +3,16 @@ package assad.z.model;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Item {
-    @Column(name = "user_id")
-    private Long user_id;
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "item_id")
     private Long item_id;
-    @Column(name="item")
+    @Column(name = "user_id")
+    private Long user_id;
     private String item;
-    @Column(name = "status")
     private boolean status = true;
 
     public Item() {

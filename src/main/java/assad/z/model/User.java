@@ -11,7 +11,6 @@ public class User {
     @Id
     private Long user_id;
     @NotNull(message = "First name is required")
-    @Column(name = "first_name")
     private String email;
     @NotNull(message = "Password is required")
     @Column(name = "password")
