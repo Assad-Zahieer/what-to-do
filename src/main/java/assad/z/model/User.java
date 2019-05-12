@@ -2,8 +2,6 @@ package assad.z.model;
 
 
 
-import org.hibernate.validator.constraints.Email;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
