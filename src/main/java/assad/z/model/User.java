@@ -2,6 +2,8 @@ package assad.z.model;
 
 
 
+import org.hibernate.validator.constraints.Email;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -11,7 +13,6 @@ public class User {
     @Id
     private Long user_id;
     @NotNull(message = "First name is required")
-    @Column(name = "first_name")
     private String email;
     @NotNull(message = "Password is required")
     @Column(name = "password")

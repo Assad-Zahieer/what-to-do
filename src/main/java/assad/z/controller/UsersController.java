@@ -31,7 +31,7 @@ public class UsersController {
         return usersRepository.saveAndFlush(user);
     }
 
-    @RequestMapping(value = "Users/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "users/{id}", method = RequestMethod.DELETE)
     public User delete(@PathVariable Long id){
         User existingUser = usersRepository.findOne(id);
         usersRepository.delete(existingUser);
@@ -45,6 +45,14 @@ public class UsersController {
         }
         return usersRepository.saveAndFlush(user);
     }
+
+    @RequestMapping(value = "users/{email}/{password}", method = RequestMethod.GET)
+    public Long validation(@PathVariable String email, @PathVariable String password){
+
+            return usersRepository.findByEmail(email).get(0).getUser_id();
+    }
+
+
 
 
     @Autowired
