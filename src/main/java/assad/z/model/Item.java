@@ -10,7 +10,6 @@ public class Item {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Id
     private Long item_id;
-    @Column(name = "user_id")
     private Long user_id;
     private String item;
     private boolean status = true;

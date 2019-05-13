@@ -9,15 +9,16 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("api/v2")
 public class UsersController {
-    @RequestMapping(value = "users", method = RequestMethod.GET)
-    private List<User> list() {
-        return usersRepository.findAll();
-    }
+//    @RequestMapping(value = "users", method = RequestMethod.GET)
+//    private List<User> list() {
+//        return usersRepository.findAll();
+//    }
 
     @RequestMapping(value = "users/{id}", method = RequestMethod.POST)
     public User get(@PathVariable Long id) {
@@ -48,9 +49,18 @@ public class UsersController {
 
     @RequestMapping(value = "users/{email}/{password}", method = RequestMethod.GET)
     public Long validation(@PathVariable String email, @PathVariable String password){
+        System.out.println(email);
+        List<User> emailList = usersRepository.findByEmail(email);
+        for (User user:emailList){
+            if(user.getPassword().equals(password)){
+                return user.getUser_id();
+            }
+        }
+        return (long) 0;
 
-            return usersRepository.findByEmail(email).get(0).getUser_id();
     }
+
+
 
 
 

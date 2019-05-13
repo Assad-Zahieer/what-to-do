@@ -10,7 +10,6 @@ public class User {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Id
     private Long user_id;
-    @NotNull(message = "First name is required")
     private String email;
     @NotNull(message = "Password is required")
     @Column(name = "password")
